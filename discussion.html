@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chung's Discussion Answers</title>
+    <style>
+    .questions {font-family: sans-serif; color: gray;}
+    .answers {font-family: sans-serif; color: darkblue; background-color:  lightyellow; line-height: 115%;}
+    body {padding: 10px;}
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container-fluid">
+<div class="row"><h3 class="questions">Runtime</h3></div>
+
+<div class="row"><p><span class="questions">When calculating the Big O notation for a particular algorithm, it’s necessary to consider the length of time it takes for the algorithm to run as the algorithm’s workload approaches infinity. You can think of the <b>workload</b> as the number of tasks required to complete a job. What determines the workload of figuring out whether your box of animal crackers contains an elephant?</span></p></div>
+
+<div class="row"><p><span class="answers">The number of animal crackers in the box determines the workload of figuring out whether my box of animal cracters contains an elephant. Since we have to think pessimistically, the work will be O(n), where n = number of animal crackers in the box that we have to individually evaluate for elephantile elements.</span></p></div>
+
+<div class="row"><p><span class="questions">Order the following runtimes in descending order of efficiency (that is, fastest runtimes first, slowest last) as n approaches infinity:</p>
+<ul class="questions">
+    <li>O(log n)</li>
+    <li>O(n2)</li>
+    <li>O(n log n)</li>
+    <li>O(n)</li>
+    <li>O(2n) (i.e. 2 to the n-th power)</li>
+    <li>O(1)</li>
+</ul></span></div>
+
+<div class="row"><p><span class="answers">The runtimes, in order of fastest to slowest:</p>
+<ol class="answers">
+    <li>Constant: O(1)</li>
+    <li>Logarithmic: O(log n)</li>
+    <li>Linear: O(n)</li>
+    <li>Logarithmic: O(n log n)</li>
+    <li>Quadratic: O(n^2)</li>
+    <li>Exponential: O(2^n)</li>
+    <li>Not listed, but worth noting: Factorial: O(n!) is the slowest!</li>
+</ol></span></div>
+
+<div class="row"><h3 class="questions">Stacks and Queues</h3></div>
+
+<div class="row"><p><span class="questions">In the following cases, would a stack or queue be a more appropriate data structure?</p>
+<ol class="questions">
+<li>The process of loading and unloading pallets onto a flatbed truck</li> <span class="answers">This is LIFO, which is a stack. To load, you put pallets in the order of 1, 2, 3, 4 (four is on top). To unload, you take it from the top: 4, 3, 2, then 1.</span>
+<li>Putting bottle caps on bottles of beer as they roll down an assembly line</li> <span class="answers">This is a queue, since the first bottle on the assembly line gets a cap and then moves on first. (FIFO)</span>
+<li>Calculating the solution to this mathematical expression: 2 + (7 * 4) - (3 / 2)</li> <span class="answers">Since the expressions that are usually evaluated first are properly contained in parentheses, this would be a queue where you evaluate first from left to right: 2 + (28) - (1.5) = 28.5</span>
+</ol></span></div>
+
+<div class="row"><p><span class="questions">Describe two more situations where a queue would be an appropriate data structure.</span></p></div>
+
+<div class="row">
+<ul class="answers">
+    <li>Traffic jam on 101: the first car behind the cause of the traffic jam (most likely a fender bender) gets to drive forward first.</li>
+    <li>Waiting for a table at a restaurant that doesn't take reservations; you get a table when your name comes up on the list. (Let's temporarily ignore the logistics of different table and party sizes.)</li>
+</ul></div>
+
+<div class="row"><p><span class="questions">Describe two more situations where a stack would be an appropriate data structure.</span></p></div>
+
+<div class="row">
+<ul class="answers">
+    <li>Making naan (or pancakes or tortillas or waffles): When you make them, you put the first one you make on the bottom, then keep adding to the stack. When you serve it, you take from the top. LIFO.</li>
+    <li>Dishes: When you wash dishes and put them away, you put them in the shelf from bottom to top. When you use them, you take the last one you put in first (top to bottom).</li>
+</ul></div>
+
+<div class="row"><h3 class="questions">Linked Lists</h3></div>
+
+<div class="row"><p><span class="questions">Given the linked list below, which are the nodes? What is the data for each node? Where is the head? Where is the tail? (Please be as specific as possible — exactly which parts of the diagram correspond to each part? Arrows? Boxes? Text?)</span></p></div>
+
+<div class="row"><img src="ll.svg" width=70%></div>
+<div class="row"><p><span class="answers">The nodes are the three rectangles that contain .data and .next attributes (second row). The data for each node is a string containing "apple", "berry", and "cherry", respectively. The head is the node containing the data string "apple". The current tail is the node containing the data string "cherry". (Note: our linked list class doesn't appear to be officially tracking the tail.)  </span></p></div>
+
+
+<div class="row"><p><span class="questions">What’s the difference between doubly- and singly-linked lists?</span></p></div>
+
+<div class="row"><p><span class="answers">Singly-linked lists provide connections between nodes via the .next attribute. Doubly-linked lists also provide connections via the .prev attribute, which offers another option for traversing the linked list (to work backwards, so to speak).</span></p></div>
+
+
+<div class="row"><p><span class="questions">Why is it faster to append to a linked list if we keep track of the tail as an attribute?</span></p>
+
+<p><span class="answers">If we keep track of the tail as an attribute, we don't have to traverse the linked list to find the tail every time in order to append. It's an awesome convenience. </span></p></div>
+
+<div class="row"><h3 class="questions">Trees</h3></div>
+
+<div class="row"><img src="tree.svg" width=100%></div>
+
+<div class="row"><p><span class="questions">Given the tree above, in what order would a Breadth First Search (BFS) algorithm visit each node until finding burrito (starting at food)? Just list the order of nodes visited; no need to recreate the state of the algorithm data in your answer.</span></p></div>
+
+<div class="row"><ul class="answers">
+    <li>Start with [food]</li>
+    <li>Not food, so add its children: [Italian, Indian, Mexican]</li>
+    <li>Pop Italian (not it), so add its children: [Indian, Mexican, lasagna, pizza]</li>
+    <li>Pop Indian (not it), so add its children: [Mexican, lasagna, pizza, tikka masala, saag]</li>
+    <li>Pop Mexican (not it), so add its children: [lasagna, pizza, tikka masala, saag, burrito, tacos, enchiladas]</li>
+    <li>Pop lasagna (not it); it's a leaf, so no children to add: [pizza, tikka masala, saag, burrito, tacos, enchiladas]</li>
+    <li>Pop pizza (not it), so add its children: [tikka masala, saag, burrito, tacos, enchiladas, thin crust, Chicago-style, New York-style, Sicilian]</li>
+    <li>Pop tikka masala (not it); it's a leaf, so no children to add: [saag, burrito, tacos, enchiladas, thin crust, Chicago-style, New York-style, Sicilian]</li>
+    <li>Pop saag (not it); it's a leaf, so no children to add: [burrito, tacos, enchiladas, thin crust, Chicago-style, New York-style, Sicilian]</li>
+    <li>YAY! WE FOUND BURRITO!!!</li>
+</ul></div>
+
+<div class="row"><p><span class="questions">Given the tree above, in what order would a Depth First Search (DFS) algorithm visit each node until finding Chicago-style (starting at food)? Just list the order of nodes visited; no need to recreate the state of the algorithm data in your answer.</span></p></div>
+
+<div class="row"><ul class="answers">
+    <li>Start with [food]</li>
+    <li>Pop food (not it), so add its children: [Italian, Indian, Mexican]</li>
+    <li>Pop Mexican (not it), so add its children: [Italian, Indian, burrito, tacos, enchiladas]</li>
+    <li>Pop enchiladas (not it), has no children so down to: [Italian, Indian, burrito, tacos]</li>
+    <li>Pop tacos (not it), has no children so down to: [Italian, Indian, burrito]</li>
+    <li>Pop burrito (not it), has no children so down to: [Italian, Indian]</li>
+    <li>Pop Indian (not it), so add its children: [Italian, tikka masala, saag]</li>
+    <li>Pop saag (not it), has no children so down to: [Italian, tikka masala]</li>
+    <li>Pop tikka masala (not it), has no children so down to: [Italian]</li>
+    <li>Pop Italian (not it), so add its children: [lasagna, pizza]</li>
+    <li>Pop pizza (not it), so add its children: [lasagna, Chicago-style, New York-style, Sicilian]</li>
+    <li>Pop Sicilian (not it), has no children so down to: [lasagna, Chicago-style, New York-style]</li>
+    <li>Pop New York-style (not it), has no children so down to: [lasagna, Chicago-style]</li>
+    <li>YAY! FOUND CHICAGO-STYLE!</li>
+</ul></div>
+
+<div class="row"><p><span class="questions">How is a binary search tree different from other trees?</span></p></div>
+
+<div class="row"><p><span class="answers">Binary serach trees are different from other trees mainly because of the arrangement rules that dictate their creation. For example, most trees can branch out as-needed, but binary search trees can have <b>at most</b> two children (one left and one right child). This is to faciliate fast searching.</span></p></div>
+
+</body>
+</html>
